@@ -128,7 +128,7 @@ class RecipeApp {
     renderRecipeImage(recipe) {
         if (recipe.Thumbnail && recipe.Thumbnail.trim()) {
             const emoji = this.getRecipeEmoji(recipe.Recipe_Name);
-            return `<img class="recipe-image" src="${recipe.Thumbnail}" alt="${recipe.Recipe_Name}" onerror="this.outerHTML='<div class=\\"recipe-image placeholder\\">${emoji}</div>'">`;
+            return `<img class="recipe-image" src="${recipe.Thumbnail}" alt="${recipe.Recipe_Name}" onerror="app.handleImageError(this, '${emoji}')">`;
         } else {
             return this.getImagePlaceholder(recipe.Recipe_Name);
         }
@@ -137,6 +137,13 @@ class RecipeApp {
     getImagePlaceholder(recipeName) {
         const emoji = this.getRecipeEmoji(recipeName);
         return `<div class="recipe-image placeholder">${emoji}</div>`;
+    }
+
+    handleImageError(imgElement, emoji) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'recipe-image placeholder';
+        placeholder.textContent = emoji;
+        imgElement.parentNode.replaceChild(placeholder, imgElement);
     }
 
     getRecipeEmoji(recipeName) {
