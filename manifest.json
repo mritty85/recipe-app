@@ -1,8 +1,8 @@
 {
-    "name": "Recipe Collection",
-    "short_name": "Recipes",
+    "name": "RocketHaus Recipes",
+    "short_name": "RocketHaus",
     "description": "A mobile-optimized recipe collection app",
-    "start_url": "/",
+    "start_url": "/recipe-app/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#2196F3",

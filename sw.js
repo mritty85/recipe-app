@@ -1,10 +1,10 @@
-const CACHE_NAME = 'recipe-app-v1';
+const CACHE_NAME = 'recipe-app-v2';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/styles.css',
-    '/app.js',
-    '/manifest.json'
+    '/recipe-app/',
+    '/recipe-app/index.html',
+    '/recipe-app/styles.css',
+    '/recipe-app/app.js',
+    '/recipe-app/manifest.json'
 ];
 
 self.addEventListener('install', event => {

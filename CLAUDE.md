@@ -1,4 +1,4 @@
-# Recipe Collection Mobile App - Project Context
+# RocketHaus Recipes Mobile App - Project Context
 
 ## Project Overview
 A mobile-optimized Progressive Web App (PWA) for browsing and searching recipes, built with vanilla HTML/CSS/JavaScript frontend and Google Sheets as a backend CMS.
@@ -31,10 +31,12 @@ The recipe database uses these columns in Google Sheets:
 - ✅ Responsive mobile-first design
 - ✅ Real-time search across recipes, ingredients, and tags
 - ✅ Filter by cuisine type and recipe category
-- ✅ Detailed recipe modal with full instructions
+- ✅ Full-page recipe detail view (cooking-safe, no accidental closure)
 - ✅ Progressive Web App (installable, offline-capable)
 - ✅ Touch-optimized interface
 - ✅ Fast loading with minimal dependencies
+- ✅ Clean recipe card display (removed prep/cook times)
+- ✅ Prominent close button for recipe details
 
 ### File Structure
 ```
@@ -113,6 +115,9 @@ Google Apps Script provides these endpoints:
 - Service worker caches static assets for offline use
 - Google Apps Script handles CORS automatically
 - No build process required - simple deployment pipeline
+- Recipe detail uses edge-to-edge full-page view for cooking safety
+- Source URLs display as "Recipe Source" links for cleaner presentation
+- Only explicit close button can dismiss recipe view (no click-outside)
 
 ## Key Design Decisions
 1. **Vanilla JavaScript**: Keeps bundle size minimal, fast loading
