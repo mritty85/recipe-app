@@ -246,11 +246,11 @@ class RecipeApp {
 
     async copyIngredients(ingredients) {
         try {
-            // Format ingredients as bullet points to create separate reminders
+            // Format ingredients with checkmarks for Notes app conversion to Reminders
             const formattedIngredients = ingredients
                 .split(',')
-                .map(ingredient => `• ${ingredient.trim()}`)
-                .join('\n\n');
+                .map(ingredient => `☑️ ${ingredient.trim()}`)
+                .join('\n');
             
             await navigator.clipboard.writeText(formattedIngredients);
             
