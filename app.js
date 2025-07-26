@@ -246,10 +246,10 @@ class RecipeApp {
 
     async copyIngredients(ingredients) {
         try {
-            // Format ingredients with double newlines to create separate reminders
+            // Format ingredients as bullet points to create separate reminders
             const formattedIngredients = ingredients
                 .split(',')
-                .map(ingredient => ingredient.trim())
+                .map(ingredient => `• ${ingredient.trim()}`)
                 .join('\n\n');
             
             await navigator.clipboard.writeText(formattedIngredients);
