@@ -105,6 +105,8 @@ class RecipeApp {
             return;
         }
 
+        console.log('Rendering recipes with thumbnails:', recipes.map(r => ({ name: r.Recipe_Name, thumbnail: r.Thumbnail })));
+
         grid.innerHTML = recipes.map((recipe, index) => `
             <div class="recipe-card" onclick="app.showRecipeDetail(${this.recipes.indexOf(recipe)})">
                 ${this.renderRecipeImage(recipe)}
@@ -125,7 +127,8 @@ class RecipeApp {
 
     renderRecipeImage(recipe) {
         if (recipe.Thumbnail && recipe.Thumbnail.trim()) {
-            return `<img class="recipe-image" src="${recipe.Thumbnail}" alt="${recipe.Recipe_Name}" onerror="this.outerHTML=app.getImagePlaceholder('${recipe.Recipe_Name}')">`;
+            const emoji = this.getRecipeEmoji(recipe.Recipe_Name);
+            return `<img class="recipe-image" src="${recipe.Thumbnail}" alt="${recipe.Recipe_Name}" onerror="this.outerHTML='<div class=\\"recipe-image placeholder\\">${emoji}</div>'">`;
         } else {
             return this.getImagePlaceholder(recipe.Recipe_Name);
         }
