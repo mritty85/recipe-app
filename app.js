@@ -184,10 +184,12 @@ class RecipeApp {
                     <div><strong>Servings:</strong> ${recipe.Servings}</div>
                     ${recipe.Source ? `<div><strong>Source:</strong> ${this.formatSource(recipe.Source)}</div>` : ''}
                 </div>
-                ${recipe.Tags ? `<div><strong>Tags:</strong> ${this.formatTags(recipe.Tags)}</div>` : ''}
                 
                 <div class="ingredients">
-                    <h3>Ingredients</h3>
+                    <div class="section-header">
+                        <h3>Ingredients</h3>
+                        <button class="copy-btn" onclick="app.copyIngredients('${recipe.Ingredients.replace(/'/g, "\\'")}')">📋</button>
+                    </div>
                     <ul>${this.formatIngredients(recipe.Ingredients)}</ul>
                 </div>
                 
@@ -233,6 +235,35 @@ class RecipeApp {
     closeModal() {
         document.getElementById('recipeModal').style.display = 'none';
         document.body.style.overflow = 'auto';
+    }
+
+    async copyIngredients(ingredients) {
+        try {
+            // Format ingredients with newlines for Apple Reminders
+            const formattedIngredients = ingredients
+                .split(',')
+                .map(ingredient => ingredient.trim())
+                .join('\n');
+            
+            await navigator.clipboard.writeText(formattedIngredients);
+            
+            // Visual feedback
+            const copyBtn = event.target;
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = '✅';
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+            }, 1500);
+        } catch (err) {
+            console.error('Failed to copy ingredients:', err);
+            // Fallback visual feedback for error
+            const copyBtn = event.target;
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = '❌';
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+            }, 1500);
+        }
     }
 
     showError(message) {
