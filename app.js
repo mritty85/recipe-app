@@ -1,7 +1,7 @@
 class RecipeApp {
     constructor() {
         // Replace with your actual Google Apps Script web app URL
-        this.API_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+        this.API_URL = 'https://script.google.com/macros/s/AKfycby3dnWwo1wELZqjkT0NvOJzlW5hwB88IdY-MLDIXb5PxDGWBODgGS-kNGy-wScSlkoemQ/exec';
         this.recipes = [];
         this.filteredRecipes = [];
         this.init();
