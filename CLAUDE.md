@@ -41,6 +41,9 @@ The recipe database uses these columns in Google Sheets:
 - ✅ Recipe images with smart fallback system
 - ✅ Emoji placeholders for missing images
 - ✅ Image caching for offline viewing
+- ✅ Copy ingredients to clipboard functionality
+- ✅ Tags section removed from recipe detail view
+- ✅ Fixed image fallback rendering bugs
 
 ### File Structure
 ```
@@ -89,8 +92,8 @@ Google Apps Script provides these endpoints:
 - [ ] Advanced search filters (dietary restrictions, cook time ranges)
 
 ### Functionality
+- [x] Shopping list generation from recipes (copy ingredients feature)
 - [ ] Recipe collections/meal planning
-- [ ] Shopping list generation from recipes
 - [ ] Recipe scaling (adjust servings)
 - [ ] Recipe notes/personal modifications
 - [ ] Recipe import from URLs
@@ -127,6 +130,8 @@ Google Apps Script provides these endpoints:
 - Recipe images hosted on GitHub Pages with smart emoji fallbacks
 - Context-aware emoji selection based on recipe name (🍝 for pasta, 🍕 for pizza, etc.)
 - Graceful degradation for broken or missing image URLs
+- Copy ingredients functionality with clipboard integration for easy shopping list creation
+- Clean ingredient formatting compatible with Notes app workflow for Apple Reminders conversion
 
 ## Key Design Decisions
 1. **Vanilla JavaScript**: Keeps bundle size minimal, fast loading

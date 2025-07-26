@@ -111,12 +111,10 @@ class RecipeApp {
             <div class="recipe-card" onclick="app.showRecipeDetail(${this.recipes.indexOf(recipe)})">
                 ${this.renderRecipeImage(recipe)}
                 <div class="recipe-content">
+                    <div class="recipe-cuisine">${recipe.Cuisine} • ${recipe.Type}</div>
                     <div class="recipe-title">${recipe.Recipe_Name}</div>
-                    <div class="recipe-meta">
-                        <span>${recipe.Cuisine} • ${recipe.Type}</span>
+                    <div class="recipe-meta-split">
                         <span class="recipe-time">${recipe.Total_Time} min</span>
-                    </div>
-                    <div class="recipe-meta">
                         <span>Serves: ${recipe.Servings}</span>
                     </div>
                     ${recipe.Tags ? `<div class="recipe-tags">${this.formatTags(recipe.Tags)}</div>` : ''}
@@ -189,7 +187,7 @@ class RecipeApp {
                     <div><strong>Cook Time:</strong> ${recipe.Cook_Time} min</div>
                     <div><strong>Total Time:</strong> ${recipe.Total_Time} min</div>
                     <div><strong>Servings:</strong> ${recipe.Servings}</div>
-                    ${recipe.Source ? `<div><strong>Source:</strong> ${this.formatSource(recipe.Source)}</div>` : ''}
+                    ${recipe.Source ? `<div>${this.formatSource(recipe.Source)}</div>` : ''}
                 </div>
                 
                 <div class="ingredients">
