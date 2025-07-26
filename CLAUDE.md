@@ -26,6 +26,7 @@ The recipe database uses these columns in Google Sheets:
 - `Ingredients` - Comma-separated ingredients list
 - `Instructions` - Numbered step instructions
 - `Variations_Tips` - Additional notes and variations
+- `Thumbnail` - Image URL for recipe photo (GitHub Pages hosted images)
 
 ### Key Features Implemented
 - ✅ Responsive mobile-first design
@@ -37,6 +38,9 @@ The recipe database uses these columns in Google Sheets:
 - ✅ Fast loading with minimal dependencies
 - ✅ Clean recipe card display (removed prep/cook times)
 - ✅ Prominent close button for recipe details
+- ✅ Recipe images with smart fallback system
+- ✅ Emoji placeholders for missing images
+- ✅ Image caching for offline viewing
 
 ### File Structure
 ```
@@ -48,6 +52,8 @@ The recipe database uses these columns in Google Sheets:
 ├── sw.js             # Service worker for offline
 ├── apps-script-code.js # Google Apps Script API code
 ├── RecipeDatabase.csv # Sample data structure
+├── images/            # Recipe images folder
+│   └── README.md      # Images folder documentation
 └── README.md         # Documentation
 ```
 
@@ -73,7 +79,7 @@ Google Apps Script provides these endpoints:
 ## Future Enhancement Ideas
 
 ### Design & UX
-- [ ] Recipe images/photos
+- [x] Recipe images/photos (implemented with smart fallbacks)
 - [ ] Dark mode toggle
 - [ ] Recipe rating system
 - [ ] Favorite recipes functionality
@@ -93,7 +99,7 @@ Google Apps Script provides these endpoints:
 
 ### Technical Improvements
 - [ ] Image optimization and lazy loading
-- [ ] Enhanced caching strategies
+- [x] Enhanced caching strategies (images cached separately for offline)
 - [ ] Performance monitoring
 - [ ] Analytics integration
 - [ ] Error handling improvements
@@ -112,12 +118,15 @@ Google Apps Script provides these endpoints:
 - Built mobile-first with touch interactions in mind
 - Uses semantic HTML for accessibility
 - CSS Grid for responsive recipe card layout
-- Service worker caches static assets for offline use
+- Service worker caches static assets and images separately for offline use
 - Google Apps Script handles CORS automatically
 - No build process required - simple deployment pipeline
 - Recipe detail uses edge-to-edge full-page view for cooking safety
 - Source URLs display as "Recipe Source" links for cleaner presentation
 - Only explicit close button can dismiss recipe view (no click-outside)
+- Recipe images hosted on GitHub Pages with smart emoji fallbacks
+- Context-aware emoji selection based on recipe name (🍝 for pasta, 🍕 for pizza, etc.)
+- Graceful degradation for broken or missing image URLs
 
 ## Key Design Decisions
 1. **Vanilla JavaScript**: Keeps bundle size minimal, fast loading
@@ -125,12 +134,22 @@ Google Apps Script provides these endpoints:
 3. **GitHub Pages**: Free hosting with automatic deployments
 4. **PWA**: Installable, works offline, feels native on mobile
 5. **Single Page App**: Smooth navigation without page reloads
+6. **GitHub Images**: Store recipe images in repo for version control and free hosting
+7. **Smart Fallbacks**: Emoji placeholders provide visual consistency when images unavailable
 
 ## Performance Characteristics
 - Initial load: ~50KB total (HTML/CSS/JS)
 - Recipe data: Fetched once, cached in memory
-- Images: None currently (keeps it fast)
-- Offline: Full functionality available after first load
+- Images: Cached separately by service worker for offline viewing
+- Offline: Full functionality available after first load, including cached images
 - Mobile-optimized: Touch targets, readable fonts, fast scrolling
+- Graceful degradation: App works perfectly with or without images
+
+## Image Management
+- **Storage**: Recipe images stored in `/images/` folder in GitHub repository
+- **URLs**: Use GitHub Pages URLs: `https://mritty85.github.io/recipe-app/images/filename.jpg`
+- **Fallbacks**: Context-aware emoji placeholders (🍝, 🍕, 🍗, etc.) for missing images
+- **Caching**: Service worker caches images for offline availability
+- **Format**: Supports any web image format (JPG, PNG, WebP, etc.)
 
 This foundation provides excellent scalability for future enhancements while maintaining simplicity and performance.
