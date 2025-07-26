@@ -107,17 +107,54 @@ class RecipeApp {
 
         grid.innerHTML = recipes.map((recipe, index) => `
             <div class="recipe-card" onclick="app.showRecipeDetail(${this.recipes.indexOf(recipe)})">
-                <div class="recipe-title">${recipe.Recipe_Name}</div>
-                <div class="recipe-meta">
-                    <span>${recipe.Cuisine} • ${recipe.Type}</span>
-                    <span class="recipe-time">${recipe.Total_Time} min</span>
+                ${this.renderRecipeImage(recipe)}
+                <div class="recipe-content">
+                    <div class="recipe-title">${recipe.Recipe_Name}</div>
+                    <div class="recipe-meta">
+                        <span>${recipe.Cuisine} • ${recipe.Type}</span>
+                        <span class="recipe-time">${recipe.Total_Time} min</span>
+                    </div>
+                    <div class="recipe-meta">
+                        <span>Serves: ${recipe.Servings}</span>
+                    </div>
+                    ${recipe.Tags ? `<div class="recipe-tags">${this.formatTags(recipe.Tags)}</div>` : ''}
                 </div>
-                <div class="recipe-meta">
-                    <span>Serves: ${recipe.Servings}</span>
-                </div>
-                ${recipe.Tags ? `<div class="recipe-tags">${this.formatTags(recipe.Tags)}</div>` : ''}
             </div>
         `).join('');
+    }
+
+    renderRecipeImage(recipe) {
+        if (recipe.Thumbnail && recipe.Thumbnail.trim()) {
+            return `<img class="recipe-image" src="${recipe.Thumbnail}" alt="${recipe.Recipe_Name}" onerror="this.outerHTML=app.getImagePlaceholder('${recipe.Recipe_Name}')">`;
+        } else {
+            return this.getImagePlaceholder(recipe.Recipe_Name);
+        }
+    }
+
+    getImagePlaceholder(recipeName) {
+        const emoji = this.getRecipeEmoji(recipeName);
+        return `<div class="recipe-image placeholder">${emoji}</div>`;
+    }
+
+    getRecipeEmoji(recipeName) {
+        const name = recipeName.toLowerCase();
+        if (name.includes('pasta') || name.includes('spaghetti') || name.includes('noodle')) return '🍝';
+        if (name.includes('pizza')) return '🍕';
+        if (name.includes('burger') || name.includes('sandwich')) return '🍔';
+        if (name.includes('salad')) return '🥗';
+        if (name.includes('soup') || name.includes('stew')) return '🍲';
+        if (name.includes('chicken')) return '🍗';
+        if (name.includes('fish') || name.includes('salmon') || name.includes('tuna')) return '🐟';
+        if (name.includes('beef') || name.includes('steak')) return '🥩';
+        if (name.includes('rice')) return '🍚';
+        if (name.includes('bread') || name.includes('toast')) return '🍞';
+        if (name.includes('egg')) return '🥚';
+        if (name.includes('cake') || name.includes('dessert')) return '🍰';
+        if (name.includes('cookie')) return '🍪';
+        if (name.includes('taco') || name.includes('mexican')) return '🌮';
+        if (name.includes('curry') || name.includes('indian')) return '🍛';
+        if (name.includes('sushi') || name.includes('japanese')) return '🍣';
+        return '🍽️';
     }
 
     formatTags(tags) {
@@ -133,6 +170,7 @@ class RecipeApp {
 
         detail.innerHTML = `
             <div class="recipe-detail">
+                ${this.renderRecipeImage(recipe)}
                 <h2>${recipe.Recipe_Name}</h2>
                 <div class="detail-meta">
                     <div><strong>Cuisine:</strong> ${recipe.Cuisine}</div>

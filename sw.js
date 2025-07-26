@@ -1,4 +1,5 @@
-const CACHE_NAME = 'recipe-app-v2';
+const CACHE_NAME = 'recipe-app-v3';
+const IMAGE_CACHE_NAME = 'recipe-images-v1';
 const urlsToCache = [
     '/recipe-app/',
     '/recipe-app/index.html',
@@ -15,11 +16,36 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Return cached version or fetch from network
-                return response || fetch(event.request);
+    const url = new URL(event.request.url);
+    
+    // Handle image requests differently for better caching
+    if (event.request.destination === 'image') {
+        event.respondWith(
+            caches.open(IMAGE_CACHE_NAME).then(cache => {
+                return cache.match(event.request).then(response => {
+                    if (response) {
+                        return response;
+                    }
+                    return fetch(event.request).then(fetchResponse => {
+                        // Only cache successful image responses
+                        if (fetchResponse.ok) {
+                            cache.put(event.request, fetchResponse.clone());
+                        }
+                        return fetchResponse;
+                    }).catch(() => {
+                        // Return a placeholder if image fails to load
+                        return new Response('', { status: 404 });
+                    });
+                });
             })
-    );
+        );
+    } else {
+        // Handle other requests normally
+        event.respondWith(
+            caches.match(event.request)
+                .then(response => {
+                    return response || fetch(event.request);
+                })
+        );
+    }
 });
