@@ -28,9 +28,6 @@ class RecipeApp {
         typeFilter.addEventListener('change', () => this.applyFilters());
         
         closeBtn.addEventListener('click', () => this.closeModal());
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) this.closeModal();
-        });
 
         // Enter key for search
         searchInput.addEventListener('keypress', (e) => {
@@ -117,7 +114,6 @@ class RecipeApp {
                 </div>
                 <div class="recipe-meta">
                     <span>Serves: ${recipe.Servings}</span>
-                    <span>Prep: ${recipe.Prep_Time}m | Cook: ${recipe.Cook_Time}m</span>
                 </div>
                 ${recipe.Tags ? `<div class="recipe-tags">${this.formatTags(recipe.Tags)}</div>` : ''}
             </div>
@@ -174,7 +170,7 @@ class RecipeApp {
 
     formatSource(source) {
         if (source.startsWith('http')) {
-            return `<a href="${source}" target="_blank" rel="noopener">${source}</a>`;
+            return `<a href="${source}" target="_blank" rel="noopener">Recipe Source</a>`;
         }
         return source;
     }
