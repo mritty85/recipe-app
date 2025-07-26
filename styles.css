@@ -70,11 +70,18 @@ body {
 
 .filters select {
     padding: 0.5rem;
-    border: 1px solid #ddd;
+    border: 1px solid #BCC4B7;
     border-radius: 5px;
     font-size: 1rem;
     flex: 1;
     min-width: 150px;
+    background-color: white;
+    color: #333;
+}
+
+.filters select:focus {
+    outline: 2px solid #8B6F47;
+    border-color: #8B6F47;
 }
 
 .recipe-grid {
@@ -187,7 +194,7 @@ body {
     top: 1rem;
     width: 44px;
     height: 44px;
-    background: #2196F3;
+    background: #8B6F47;
     color: white;
     border: none;
     border-radius: 50%;
@@ -201,7 +208,7 @@ body {
 }
 
 .close:hover {
-    background: #1976D2;
+    background: #6B5537;
 }
 
 .close:active {
@@ -253,7 +260,7 @@ body {
 }
 
 .copy-btn {
-    background: #2196F3;
+    background: #8B6F47;
     border: none;
     border-radius: 50%;
     width: 35px;
@@ -270,7 +277,7 @@ body {
 }
 
 .copy-btn:hover {
-    background: #1976D2;
+    background: #6B5537;
     transform: scale(1.05);
 }
 
