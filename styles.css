@@ -21,6 +21,7 @@ body {
     z-index: 100;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     overflow: visible;
+    min-height: 140px;
 }
 
 .header h1 {
@@ -65,7 +66,7 @@ body {
 
 .filters {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: 1fr 1fr 80px;
     gap: 0.5rem;
     margin-top: 1rem;
     align-items: center;
@@ -88,6 +89,8 @@ body {
     background-repeat: no-repeat;
     background-size: 1.5em 1.5em;
     padding-right: 2rem;
+    min-width: 0;
+    width: 100%;
 }
 
 .filters select:focus {
@@ -121,7 +124,7 @@ body {
 @media (max-width: 480px) {
     .filters {
         gap: 0.25rem;
-        grid-template-columns: 1fr 1fr auto;
+        grid-template-columns: 1fr 1fr 70px;
     }
     
     .filters select {
@@ -141,7 +144,7 @@ body {
 @media (max-width: 375px) {
     .filters {
         gap: 0.2rem;
-        grid-template-columns: 1fr 1fr auto;
+        grid-template-columns: 1fr 1fr 60px;
     }
     
     .filters select {
