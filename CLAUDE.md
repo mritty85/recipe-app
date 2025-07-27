@@ -49,6 +49,10 @@ The recipe database uses these columns in Google Sheets:
 - ✅ Warm earth tone color scheme (#BCC4B7 header, #F4E8D7 accents)
 - ✅ Improved filter layout with clear button and single-row mobile optimization
 - ✅ Tags removed from recipe tiles (still available for future detail page use)
+- ✅ Integrated filters into header with sage background for cohesive design
+- ✅ Fixed ingredient/instruction list padding to prevent text clipping
+- ✅ Updated recipe detail meta layout with line breaks after each header
+- ✅ Resolved filter layout shift issues and missing clear button on mobile
 
 ### File Structure
 ```
@@ -146,6 +150,10 @@ Google Apps Script provides these endpoints:
 - Filter layout optimized for mobile with horizontal arrangement and clear functionality
 - Responsive filter design prevents wrapping on narrow screens (iPhone 13, etc.)
 - Tags removed from recipe tiles for cleaner card appearance
+- Filters integrated into header for unified design and better space utilization
+- Fixed grid layout prevents filter clipping and ensures clear button visibility across all screen sizes
+- Recipe detail meta information displays with proper line breaks for better readability
+- Enhanced list padding prevents ingredient/instruction text from being cut off at screen edges
 
 ## Key Design Decisions
 1. **Vanilla JavaScript**: Keeps bundle size minimal, fast loading
