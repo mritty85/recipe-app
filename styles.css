@@ -65,10 +65,16 @@ body {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
-.filters select {
+.filter-dropdowns {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+}
+
+.filter-dropdowns select {
     padding: 0.5rem;
     border: 1px solid #BCC4B7;
     border-radius: 5px;
@@ -79,9 +85,31 @@ body {
     color: #333;
 }
 
-.filters select:focus {
+.filter-dropdowns select:focus {
     outline: 2px solid #8B6F47;
     border-color: #8B6F47;
+}
+
+.clear-filters-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #BCC4B7;
+    border-radius: 5px;
+    background-color: #F4E8D7;
+    color: #8B6F47;
+    font-size: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.clear-filters-btn:hover {
+    background-color: #BCC4B7;
+    color: white;
+    border-color: #8B6F47;
+}
+
+.clear-filters-btn:focus {
+    outline: 2px solid #8B6F47;
 }
 
 .recipe-grid {

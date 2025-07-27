@@ -44,6 +44,9 @@ The recipe database uses these columns in Google Sheets:
 - ✅ Copy ingredients to clipboard functionality
 - ✅ Tags section removed from recipe detail view
 - ✅ Fixed image fallback rendering bugs
+- ✅ Optimized recipe card layout for reduced visual height
+- ✅ Google Fonts integration (Work Sans for headers, JetBrains Mono for body)
+- ✅ Warm earth tone color scheme (#BCC4B7 header, #F4E8D7 accents)
 
 ### File Structure
 ```
@@ -74,6 +77,8 @@ Google Apps Script provides these endpoints:
 ## Technology Stack
 - **Frontend**: Vanilla JavaScript (no frameworks)
 - **CSS**: Custom responsive design with CSS Grid/Flexbox
+- **Typography**: Google Fonts (Work Sans, JetBrains Mono)
+- **Color Scheme**: Warm earth tones (#BCC4B7, #F4E8D7, #8B6F47)
 - **Backend**: Google Apps Script (serverless)
 - **Data**: Google Sheets API
 - **Build**: None required (static files)
@@ -132,6 +137,10 @@ Google Apps Script provides these endpoints:
 - Graceful degradation for broken or missing image URLs
 - Copy ingredients functionality with clipboard integration for easy shopping list creation
 - Clean ingredient formatting compatible with Notes app workflow for Apple Reminders conversion
+- Optimized recipe card layout: cuisine/type as subheader, 50-50 split for time/servings
+- Custom Google Fonts: Work Sans (headers) and JetBrains Mono (body text)
+- Warm earth tone color palette replacing blue theme for better visual appeal
+- Removed "Source:" label from recipe links for cleaner presentation
 
 ## Key Design Decisions
 1. **Vanilla JavaScript**: Keeps bundle size minimal, fast loading

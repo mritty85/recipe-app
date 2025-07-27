@@ -19,6 +19,7 @@ class RecipeApp {
         const searchBtn = document.getElementById('searchBtn');
         const cuisineFilter = document.getElementById('cuisineFilter');
         const typeFilter = document.getElementById('typeFilter');
+        const clearFiltersBtn = document.getElementById('clearFilters');
         const modal = document.getElementById('recipeModal');
         const closeBtn = document.querySelector('.close');
 
@@ -26,6 +27,7 @@ class RecipeApp {
         searchBtn.addEventListener('click', () => this.handleSearch());
         cuisineFilter.addEventListener('change', () => this.applyFilters());
         typeFilter.addEventListener('change', () => this.applyFilters());
+        clearFiltersBtn.addEventListener('click', () => this.clearFilters());
         
         closeBtn.addEventListener('click', () => this.closeModal());
 
@@ -97,6 +99,15 @@ class RecipeApp {
         this.renderRecipes(filtered);
     }
 
+    clearFilters() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('cuisineFilter').value = '';
+        document.getElementById('typeFilter').value = '';
+        
+        this.filteredRecipes = [...this.recipes];
+        this.renderRecipes();
+    }
+
     renderRecipes(recipes = this.filteredRecipes) {
         const grid = document.getElementById('recipeGrid');
         
@@ -117,7 +128,6 @@ class RecipeApp {
                         <span class="recipe-time">${recipe.Total_Time} min</span>
                         <span>Serves: ${recipe.Servings}</span>
                     </div>
-                    ${recipe.Tags ? `<div class="recipe-tags">${this.formatTags(recipe.Tags)}</div>` : ''}
                 </div>
             </div>
         `).join('');
