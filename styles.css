@@ -306,13 +306,15 @@ body {
 }
 
 .recipe-detail .detail-meta {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
+    display: block;
     margin-bottom: 1rem;
     padding: 1rem;
     background: #f9f9f9;
     border-radius: 5px;
+}
+
+.recipe-detail .detail-meta > div {
+    margin-bottom: 0.5rem;
 }
 
 .recipe-detail .ingredients,
@@ -363,7 +365,8 @@ body {
 
 .recipe-detail ul,
 .recipe-detail ol {
-    padding-left: 1.5rem;
+    padding-left: 2rem;
+    margin-left: 0.5rem;
 }
 
 .recipe-detail li {
