@@ -47,6 +47,8 @@ The recipe database uses these columns in Google Sheets:
 - ✅ Optimized recipe card layout for reduced visual height
 - ✅ Google Fonts integration (Work Sans for headers, JetBrains Mono for body)
 - ✅ Warm earth tone color scheme (#BCC4B7 header, #F4E8D7 accents)
+- ✅ Improved filter layout with clear button and single-row mobile optimization
+- ✅ Tags removed from recipe tiles (still available for future detail page use)
 
 ### File Structure
 ```
@@ -141,6 +143,9 @@ Google Apps Script provides these endpoints:
 - Custom Google Fonts: Work Sans (headers) and JetBrains Mono (body text)
 - Warm earth tone color palette replacing blue theme for better visual appeal
 - Removed "Source:" label from recipe links for cleaner presentation
+- Filter layout optimized for mobile with horizontal arrangement and clear functionality
+- Responsive filter design prevents wrapping on narrow screens (iPhone 13, etc.)
+- Tags removed from recipe tiles for cleaner card appearance
 
 ## Key Design Decisions
 1. **Vanilla JavaScript**: Keeps bundle size minimal, fast loading

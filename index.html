@@ -18,20 +18,18 @@
             <input type="text" id="searchInput" placeholder="Search recipes, cuisine, or tags..." />
             <button id="searchBtn">🔍</button>
         </div>
+        <div class="filters">
+            <select id="cuisineFilter">
+                <option value="">All Cuisines</option>
+            </select>
+            <select id="typeFilter">
+                <option value="">All Types</option>
+            </select>
+            <button id="clearFilters" class="clear-filters-btn">Clear</button>
+        </div>
     </header>
 
     <main class="main">
-        <div class="filters">
-            <div class="filter-dropdowns">
-                <select id="cuisineFilter">
-                    <option value="">All Cuisines</option>
-                </select>
-                <select id="typeFilter">
-                    <option value="">All Types</option>
-                </select>
-            </div>
-            <button id="clearFilters" class="clear-filters-btn">Clear</button>
-        </div>
 
         <div id="recipeGrid" class="recipe-grid">
             <div class="loading">Loading recipes...</div>

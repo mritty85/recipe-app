@@ -62,29 +62,19 @@ body {
 }
 
 .filters {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
     align-items: center;
-    flex-wrap: nowrap;
 }
 
-.filter-dropdowns {
-    display: flex;
-    gap: 0.5rem;
-    flex: 1;
-    min-width: 0;
-}
-
-.filter-dropdowns select {
+.filters select {
     padding: 0.5rem 0.4rem;
-    border: 1px solid #BCC4B7;
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 5px;
     font-size: 0.9rem;
-    flex: 1;
-    min-width: 0;
-    max-width: none;
-    background-color: white;
+    background-color: rgba(255,255,255,0.9);
     color: #333;
     appearance: none;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
@@ -94,45 +84,41 @@ body {
     padding-right: 2rem;
 }
 
-.filter-dropdowns select:focus {
-    outline: 2px solid #8B6F47;
-    border-color: #8B6F47;
+.filters select:focus {
+    outline: 2px solid rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.8);
+    background-color: white;
 }
 
 .clear-filters-btn {
     padding: 0.5rem 0.6rem;
-    border: 1px solid #BCC4B7;
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 5px;
-    background-color: #F4E8D7;
+    background-color: rgba(244,232,215,0.9);
     color: #8B6F47;
     font-size: 0.85rem;
     cursor: pointer;
     white-space: nowrap;
-    flex-shrink: 0;
-    min-width: auto;
     transition: background-color 0.2s, border-color 0.2s;
 }
 
 .clear-filters-btn:hover {
-    background-color: #BCC4B7;
-    color: white;
-    border-color: #8B6F47;
+    background-color: rgba(255,255,255,0.9);
+    color: #8B6F47;
+    border-color: rgba(255,255,255,0.8);
 }
 
 .clear-filters-btn:focus {
-    outline: 2px solid #8B6F47;
+    outline: 2px solid rgba(255,255,255,0.8);
 }
 
 @media (max-width: 480px) {
     .filters {
         gap: 0.25rem;
+        grid-template-columns: 1fr 1fr auto;
     }
     
-    .filter-dropdowns {
-        gap: 0.25rem;
-    }
-    
-    .filter-dropdowns select {
+    .filters select {
         padding: 0.4rem 0.3rem;
         padding-right: 1.8rem;
         font-size: 0.8rem;
@@ -149,13 +135,10 @@ body {
 @media (max-width: 375px) {
     .filters {
         gap: 0.2rem;
+        grid-template-columns: 1fr 1fr auto;
     }
     
-    .filter-dropdowns {
-        gap: 0.2rem;
-    }
-    
-    .filter-dropdowns select {
+    .filters select {
         padding: 0.35rem 0.25rem;
         padding-right: 1.5rem;
         font-size: 0.75rem;
@@ -413,11 +396,6 @@ body {
         padding: 0.5rem;
         padding-top: 4rem;
     }
-    
-    .filters {
-        flex-direction: column;
-    }
-    
 }
 
 @media (max-width: 480px) {
